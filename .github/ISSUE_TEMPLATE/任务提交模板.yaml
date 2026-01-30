@@ -2,7 +2,7 @@ name: 任务-模板
 description: "提交新任务"
 labels: ["task"]
 title: "[任务]: "
-type: "任务"
+type: "Task"
 body:
   - type: markdown
     attributes:

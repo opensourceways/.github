@@ -2,7 +2,7 @@ name: 需求-模板
 description: 请使用opensourceways社区需求Issue模板提交需求创建。
 title: "[需求]: "
 labels: ["enhancement"]
-type: "需求"
+type: "Enhancement"
 body:
   - type: markdown
     attributes:

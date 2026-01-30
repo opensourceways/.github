@@ -13,71 +13,15 @@ body:
     attributes:
       label: 需求属性
       value: |
-        ## 所属版本
-        <!-- 例：robot-review 1.0.0 -->
+        ## 【需求背景】
 
-        ## 工作量
-        <!-- 单位：人月 -->
-
-        ## 是否需要编码
-
-        ## 是否免测试
-
-        ## 周边依赖
-
-        ## 需求来源
-    validations:
-      required: true
-
-  - type: textarea
-    attributes:
-      label: 需求描述
-      value: |
-        ## 简要说明
-        <!-- 对标题进行说明，简要描述通过该需求希望达成的目标
-        例如：在一键收集过程中将cpu、memory、card、fan、psu、product、storage等信息收集并汇总到server_config.txt文件中 -->
-
-        ## 系统用户
-        <!-- 功能会被系统中的什么角色使用，比如运维人员、网管、社区开发者等 -->
-
-        ## 前置条件
-        <!-- 需求执行前必须满足的条件，例如：BMC运行正常，OS运行正常 -->
-
-        ## 主成功场景
-        <!-- 用户与系统交互的标准路径
-        例如：
-        1. 用户触发一键收集
-        2. 打开一键收集日志
-        3. 一键收集日志中包含资产清单server_config.txt文件 -->
-
-        ## 扩展场景（含异常场景）
-        <!-- 主流程之外的异常或分支情况
-        例如：
-        扩展1. 生成资产清单文件时大小超过限制 -> 放弃收集该文件，继续收集其它文件，并在运行日志中抛出错误
-        扩展2. 生成资产清单文件失败 -> 停止一键收集并抛出错误 -->
+        
+        ## 【需求价值】
 
 
-        ## 约束
-        <!-- 请描述该需求明确的功能列表、性能指标、用户场景等
-        例如：
-        1. 资产清单文件大小不得超过50Mb
-        2. 资产清单在一键收集日志中的路径：dump_info\RTOSDump\versioninfo\server_config.txt -->
+        ## 【需求详情】
+
+
 
     validations:
       required: true
-
-  - type: dropdown
-    id: test_type
-    attributes:
-      label: "非功能需求"
-      multiple: true
-      options:
-        - 可靠性要求
-        - 可维护性要求
-        - 可测试性要求
-        - 性能要求
-        - 兼容性要求（和以前版本及周边配套）
-        - 安全要求
-        - 韧性要求
-    validations:
-      required: false

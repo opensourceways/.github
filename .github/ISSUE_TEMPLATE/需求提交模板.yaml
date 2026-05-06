@@ -1,6 +1,6 @@
 name: 需求提交模板
 description: 提交功能需求。用户只描述目标和场景，无需判断由哪个仓库负责。
-title: "[需求] "
+title: "[需求]: "
 labels:
   - kind/feature
 body:
@@ -8,7 +8,7 @@ body:
     attributes:
       value: |
         请使用业务语言描述你的需求，不需要判断由哪个仓库负责。
-        请尽量提供清晰的背景、价值、需求详情、验收标准和期望交付时间。
+        请尽量提供清晰的背景、发生位置、影响对象、需求详情、价值判断、验收方式和期望时间。
 
   - type: textarea
     id: background
@@ -23,20 +23,36 @@ body:
   - type: textarea
     id: business_value
     attributes:
-      label: 需求价值
-      description: 说明这个需求带来的业务价值或使用价值。
+      label: 不解决会有什么影响 / 需求价值
+      description: 说明如果不解决会造成什么影响，或解决后能带来什么价值。
       placeholder: |
-        例如：cla 支持某个组织关联多个邮箱，可以方便不同类型的贡献者进行各自的贡献统计。
+        例如：如果 cla 不能支持一个组织关联多个邮箱后缀，关联公司的贡献会被拆分统计，组织管理员无法获得完整贡献数据，也会影响后续贡献分析。
     validations:
       required: true
 
   - type: textarea
-    id: expected_benefit
+    id: usage_location
     attributes:
-      label: 期望收益
-      description: 说明该需求解决后，希望改善什么问题。
+      label: 当前操作路径/发生位置
+      description: 说明这个需求发生在哪个页面、流程、命令、服务或使用入口。无需判断目标仓库。
       placeholder: |
-        例如：提升 cla 服务的易用性，解决关联公司贡献无法被统计到母公司的问题。
+        例如：cla 组织管理页面、创建组织流程、GitHub App 检查结果、openEuler 官网某个页面、某个 CLI 命令。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected_roles
+    attributes:
+      label: 影响对象
+      description: 请选择主要受影响或会使用该能力的对象。
+      multiple: true
+      options:
+        - 个人贡献者
+        - 组织管理员
+        - 社区管理员
+        - 项目维护人
+        - CI/自动化用户
+        - 其他/不确定
     validations:
       required: true
 
@@ -44,32 +60,31 @@ body:
     id: requirement_details
     attributes:
       label: 需求详情
-      description: 补充具体功能行为、约束条件、异常提示或你关心的细节。
+      description: 补充你期望完成什么、具体功能行为、约束条件、异常提示或你关心的细节。
       placeholder: |
-        例如：在创建组织时，支持填写多个邮箱后缀；如果某个邮箱后缀已经被其他组织使用，需要进行提示。
+        例如：在创建组织时，支持填写多个邮箱后缀；如果某个邮箱后缀已经被其他组织使用，需要提示冲突原因。
     validations:
       required: true
 
   - type: input
     id: expected_delivery_date
     attributes:
-      label: 期望交付时间
-      description: 请填写你期望的交付时间或时间窗口。
-      placeholder: 例如：2026-06-30 或 2026 Q3
+      label: 期望时间或紧急程度
+      description: 请填写期望交付时间、时间窗口或紧急程度；如果不确定，可以填写“不确定”。
+      placeholder: 例如：2026-06-30、2026 Q3、阻塞当前工作、高/中/低、不确定
     validations:
       required: true
 
   - type: textarea
     id: acceptance_criteria
     attributes:
-      label: 验收标准
-      description: 必须可量化、可测试。
+      label: 完成后如何确认可用
+      description: 请用“完成后我能看到/做到什么”来描述验收标准。不需要写技术实现，不需要写测试代码。
       placeholder: |
         例如：
-        1. 创建组织时，支持填写多个邮箱后缀。
-        2. 通用邮箱后缀不支持填写（例如 163、qq 等）。
-        3. 当前功能上线后，已经被统计到不同组织的贡献，可以自动汇总。
-        4. 如果某个邮箱后缀已经被其他组织管理了，需要输入两个组织管理员的验证码进行身份验证。
+        1. 当我创建组织时，可以填写多个邮箱后缀。
+        2. 如果邮箱后缀已被其他组织使用，页面会提示冲突原因。
+        3. 当贡献者邮箱属于这些后缀时，贡献统计会归并到同一个组织。
     validations:
       required: true
 

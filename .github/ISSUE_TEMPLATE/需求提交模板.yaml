@@ -1,5 +1,5 @@
 name: 需求提交模板
-description: 提交功能需求。只需要描述目标和场景，不需要判断由哪个仓库负责。
+description: 提交功能需求。请描述你遇到的问题、发生位置和期望结果。
 title: "[需求]: "
 labels:
   - kind/feature
@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        请使用业务语言描述你的需求，不需要判断由哪个仓库负责。
+        请用你熟悉的方式描述需求。
         请尽量说明背景、发生位置、影响对象、需求详情、价值判断、验收方式和期望时间。
 
   - type: textarea
@@ -34,7 +34,7 @@ body:
     id: usage_location
     attributes:
       label: 当前操作路径/发生位置
-      description: 请说明这个需求发生在哪个页面、流程、命令、服务或使用入口。你不需要判断目标仓库。
+      description: 请说明这个需求发生在哪个页面、流程、命令、服务或使用入口。
       placeholder: |
         例如：cla 组织管理页面、创建组织流程、GitHub App 检查结果、openEuler 官网某个页面、某个 CLI 命令。
     validations:
@@ -127,4 +127,4 @@ body:
       label: 其他说明
       description: 可选，填写暂时不确定但希望系统或维护人注意的信息。
       placeholder: |
-        例如：目标范围可能涉及多个仓库，目前无法判断归属。
+        例如：还有一些细节暂时不确定，希望后续沟通时再补充。

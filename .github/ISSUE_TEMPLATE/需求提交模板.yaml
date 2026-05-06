@@ -8,7 +8,7 @@ body:
     attributes:
       value: |
         请用你熟悉的方式描述需求。
-        请尽量说明背景、发生位置、影响对象、需求详情、价值判断、验收方式和期望时间。
+        请尽量说明背景、发生位置、影响对象、需求详情、不解决的影响、确认方式和期望时间。
 
   - type: textarea
     id: background
@@ -47,11 +47,11 @@ body:
       description: 请选择主要受影响，或后续会使用这个能力的对象。
       multiple: true
       options:
-        - 个人贡献者
-        - 组织管理员
-        - 社区管理员
-        - 项目维护人
-        - CI/自动化使用者
+        - 我本人
+        - 和我类似的使用者
+        - 组织或团队管理员
+        - 查看或统计贡献数据的人
+        - 使用自动化流程的人
         - 其他/不确定
     validations:
       required: true
@@ -88,29 +88,16 @@ body:
     validations:
       required: true
 
-  - type: dropdown
-    id: acceptance_owner
-    attributes:
-      label: 验收人角色
-      description: 请选择谁会最终确认需求是否满足预期。
-      options:
-        - 提单人本人
-        - 产品/需求接口人
-        - 项目维护人
-        - 其他指定人员
-    validations:
-      required: true
-
   - type: checkboxes
     id: signals
     attributes:
-      label: 变更信号初判
-      description: 请选择你能感知到的影响范围，帮助后续分析。
+      label: 你认为可能影响的范围
+      description: 如果你能判断，可以选择相关影响范围；如果不确定，可以不选。
       options:
-        - label: 涉及对外 API、Webhook、CLI 或协议变更
-        - label: 涉及权限、凭证、个人数据或安全控制
-        - label: 涉及跨服务/跨仓库协作
-        - label: 需要创建或调整预发布/测试环境
+        - label: 涉及公开接口、命令行或自动化调用
+        - label: 涉及登录、权限、凭证或个人数据
+        - label: 可能影响多个页面、服务或流程
+        - label: 需要先在测试环境验证
         - label: 涉及界面交互、文档或可见体验变化
 
   - type: textarea
@@ -125,6 +112,6 @@ body:
     id: notes
     attributes:
       label: 其他说明
-      description: 可选，填写暂时不确定但希望系统或维护人注意的信息。
+      description: 可选，填写暂时不确定但希望后续处理需求的人注意的信息。
       placeholder: |
         例如：还有一些细节暂时不确定，希望后续沟通时再补充。

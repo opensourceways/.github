@@ -1,27 +1,115 @@
-name: 需求-模板
-description: 请使用opensourceways社区需求Issue模板提交需求创建。
-title: "[需求]: "
-labels: ["enhancement"]
-type: "Enhancement"
+name: 需求提交模板
+description: 提交功能需求。用户只描述目标和场景，无需判断由哪个仓库负责。
+title: "[需求] "
+labels:
+  - kind/feature
 body:
   - type: markdown
     attributes:
       value: |
-        感谢您为社区贡献新需求！请按照以下提示提供详细信息，以便我们更好地理解并跟进。
+        请使用业务语言描述你的需求，不需要判断由哪个仓库负责。
+        请尽量提供清晰的背景、价值、需求详情、验收标准和期望交付时间。
 
   - type: textarea
+    id: background
     attributes:
-      label: 需求属性
-      value: |
-        ## 【需求背景】
-
-        
-        ## 【需求价值】
-
-
-        ## 【需求详情】
-
-
-
+      label: 需求背景
+      description: 说明当前遇到的问题、触发场景或业务背景。
+      placeholder: |
+        例如：cla 服务不支持一个公司绑定多个邮箱后缀，当公司有关联公司但又期望共同统计贡献时，cla 无法将多个关联公司的贡献者都记为一个公司。
     validations:
       required: true
+
+  - type: textarea
+    id: business_value
+    attributes:
+      label: 需求价值
+      description: 说明这个需求带来的业务价值或使用价值。
+      placeholder: |
+        例如：cla 支持某个组织关联多个邮箱，可以方便不同类型的贡献者进行各自的贡献统计。
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_benefit
+    attributes:
+      label: 期望收益
+      description: 说明该需求解决后，希望改善什么问题。
+      placeholder: |
+        例如：提升 cla 服务的易用性，解决关联公司贡献无法被统计到母公司的问题。
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirement_details
+    attributes:
+      label: 需求详情
+      description: 补充具体功能行为、约束条件、异常提示或你关心的细节。
+      placeholder: |
+        例如：在创建组织时，支持填写多个邮箱后缀；如果某个邮箱后缀已经被其他组织使用，需要进行提示。
+    validations:
+      required: true
+
+  - type: input
+    id: expected_delivery_date
+    attributes:
+      label: 期望交付时间
+      description: 请填写你期望的交付时间或时间窗口。
+      placeholder: 例如：2026-06-30 或 2026 Q3
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: 验收标准
+      description: 必须可量化、可测试。
+      placeholder: |
+        例如：
+        1. 创建组织时，支持填写多个邮箱后缀。
+        2. 通用邮箱后缀不支持填写（例如 163、qq 等）。
+        3. 当前功能上线后，已经被统计到不同组织的贡献，可以自动汇总。
+        4. 如果某个邮箱后缀已经被其他组织管理了，需要输入两个组织管理员的验证码进行身份验证。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: acceptance_owner
+    attributes:
+      label: 验收人角色
+      description: 谁会最终确认需求是否满足预期。
+      options:
+        - 提单人本人
+        - 产品/需求接口人
+        - 项目维护人
+        - 其他指定人员
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: signals
+    attributes:
+      label: 变更信号初判
+      description: 请选择你能感知到的影响范围，帮助后续分析。
+      options:
+        - label: 涉及对外 API、Webhook、CLI 或协议变更
+        - label: 涉及权限、凭证、用户数据或安全控制
+        - label: 涉及跨服务/跨仓库协作
+        - label: 需要创建或调整预发布/测试环境
+        - label: 涉及用户交互、文档或可见体验变化
+
+  - type: textarea
+    id: references
+    attributes:
+      label: 补充材料
+      description: 可选，填写日志、截图、设计稿、相关 issue/PR/文档链接。
+      placeholder: |
+        例如：历史 issue、流程图、报错日志、原型链接。
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 其他说明
+      description: 可选，填写暂时不确定但希望系统或维护人注意的信息。
+      placeholder: |
+        例如：目标范围可能涉及多个仓库，目前无法判断归属。

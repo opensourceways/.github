@@ -2,7 +2,8 @@ name: 需求提交模板
 description: 提交功能需求。请描述你遇到的问题、发生位置和期望结果。
 title: "[需求]: "
 labels:
-  - kind/feature
+  - enhancement
+type: "Enhancement"
 body:
   - type: markdown
     attributes:

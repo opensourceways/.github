@@ -1,27 +1,109 @@
-name: 需求-模板
-description: 请使用opensourceways社区需求Issue模板提交需求创建。
+name: 需求提交模板
+description: 提交功能需求。请描述你遇到的问题、发生位置和期望结果。
 title: "[需求]: "
-labels: ["enhancement"]
-type: "Enhancement"
+labels:
+  - kind/feature
 body:
   - type: markdown
     attributes:
       value: |
-        感谢您为社区贡献新需求！请按照以下提示提供详细信息，以便我们更好地理解并跟进。
+        请用你熟悉的方式描述需求。
+        请尽量说明背景、发生位置、影响对象、需求详情、不解决的影响、确认方式和期望时间。
 
   - type: textarea
+    id: background
     attributes:
-      label: 需求属性
-      value: |
-        ## 【需求背景】
-
-        
-        ## 【需求价值】
-
-
-        ## 【需求详情】
-
-
-
+      label: 需求背景
+      description: 说明当前遇到的问题、触发场景或业务背景。
+      placeholder: |
+        例如：cla 服务不支持一个公司绑定多个邮箱后缀，当公司有关联公司但又期望共同统计贡献时，cla 无法将多个关联公司的贡献者都记为一个公司。
     validations:
       required: true
+
+  - type: textarea
+    id: business_value
+    attributes:
+      label: 不解决会有什么影响 / 需求价值
+      description: 说明如果不解决会造成什么影响，或解决后能带来什么价值。
+      placeholder: |
+        例如：如果 cla 不能支持一个组织关联多个邮箱后缀，关联公司的贡献会被拆分统计，组织管理员无法获得完整贡献数据，也会影响后续贡献分析。
+    validations:
+      required: true
+
+  - type: textarea
+    id: usage_location
+    attributes:
+      label: 当前操作路径/发生位置
+      description: 请说明这个需求发生在哪个页面、流程、命令、服务或使用入口。
+      placeholder: |
+        例如：cla 组织管理页面、创建组织流程、GitHub App 检查结果、openEuler 官网某个页面、某个 CLI 命令。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected_roles
+    attributes:
+      label: 影响对象
+      description: 请选择主要受影响，或后续会使用这个能力的对象。
+      multiple: true
+      options:
+        - 我本人
+        - 和我类似的使用者
+        - 组织或团队管理员
+        - 查看或统计贡献数据的人
+        - 使用自动化流程的人
+        - 其他/不确定
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirement_details
+    attributes:
+      label: 需求详情
+      description: 补充你期望完成什么、具体功能行为、约束条件、异常提示或你关心的细节。
+      placeholder: |
+        例如：在创建组织时，支持填写多个邮箱后缀；如果某个邮箱后缀已经被其他组织使用，需要提示冲突原因。
+    validations:
+      required: true
+
+  - type: input
+    id: expected_delivery_date
+    attributes:
+      label: 期望时间或紧急程度
+      description: 请填写期望交付时间、时间窗口或紧急程度；如果不确定，可以填写“不确定”。
+      placeholder: 例如：2026-06-30、2026 Q3、阻塞当前工作、高/中/低、不确定
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: 完成后如何确认可用
+      description: 请用“完成后我能看到/做到什么”来描述验收标准。不需要写技术实现，不需要写测试代码。
+      placeholder: |
+        例如：
+        1. 当我创建组织时，可以填写多个邮箱后缀。
+        2. 如果邮箱后缀已被其他组织使用，页面会提示冲突原因。
+        3. 当贡献者邮箱属于这些后缀时，贡献统计会归并到同一个组织。
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: signals
+    attributes:
+      label: 你认为可能影响的范围
+      description: 如果你能判断，可以选择相关影响范围；如果不确定，可以不选。
+      options:
+        - label: 涉及公开接口、命令行或自动化调用
+        - label: 涉及登录、权限、凭证或个人数据
+        - label: 可能影响多个页面、服务或流程
+        - label: 需要先在测试环境验证
+        - label: 涉及界面交互、文档或可见体验变化
+
+  - type: textarea
+    id: references
+    attributes:
+      label: 补充材料或其他说明
+      description: 可选，填写截图、日志、相关链接，或其他希望后续处理需求时注意的信息。
+      placeholder: |
+        例如：相关 issue、截图、报错日志、流程图、原型链接，或暂时不确定但希望后续沟通时补充的细节。

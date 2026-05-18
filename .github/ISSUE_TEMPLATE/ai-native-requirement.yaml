@@ -1,0 +1,65 @@
+name: AI-native 需求（选服务即自动推进）
+description: 提需求并选定目标服务；maintainer 打 accepted 标签后由对应服务流水线自动开始需求分析（无需再评论触发词）。仅接入 AI 流水线的仓（如 backlog）生效，其它仓可忽略本模板。
+title: "[需求] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > **AI-native 需求模板**（组织通用，新增的可选项，不替代其它模板）。
+        > 关键：选定下面「目标服务」后，maintainer 打 `accepted` 标签，接入 AI 流水线的仓
+        > （如 backlog）会**自动开始该服务的需求分析**，无需再人工评论 `[xx需求分析]`。
+        > 标题保留 `[需求]` 走《需求分析说明书》流程；改 `[任务]`/`[缺陷]` 走轻量「用户视角」流程。
+
+  - type: dropdown
+    id: target_service
+    attributes:
+      label: 目标服务
+      description: 这个需求最终要落地/开发的服务。决定 accepted 后自动起哪条服务流水线。
+      options:
+        - "robot — 机器人"
+        - "datacenter — 数据中台"
+    validations:
+      required: true
+
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景 / 目标
+      description: 为什么要做、达成什么效果（业务价值，不写技术方案）。
+      placeholder: 例：机器人对 PR 自动打标签时漏了 size 标签，期望补上 size/XS~XL。
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 需求内容 / 范围
+      description: 要做什么、改动点、影响面。能列要点就列要点。
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 验收标准
+      description: 怎样算做完（可量化、可验证）。
+      placeholder: 例：新 PR 打开后 1 分钟内带上 size/* 标签；已有 PR 不受影响。
+    validations:
+      required: true
+
+  - type: input
+    id: extra
+    attributes:
+      label: 关联链接（可选）
+      description: 相关 issue / 设计 / 截图等。
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        提交后：maintainer 评审 → 打 `accepted` → 接入 AI 流水线的仓自动起该服务需求分析
+        → 后续按服务菜单推进实现/上线。
